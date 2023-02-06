@@ -1,16 +1,11 @@
+{% extends 'main_app/layout.html' %}
 
-<!doctype html>
+{% block all_title %}About project{% endblock %}
 
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>About project page</title>
-</head>
-<body>
-    <h1>About project page</h1>
-    <p>About project page</p>
-</body>
-</html>
+{% block all_head %}
+<h1>About project</h1>
+{% endblock %}
+
+{% block all_body %}
+<p>About project</p>
+{% endblock %}
