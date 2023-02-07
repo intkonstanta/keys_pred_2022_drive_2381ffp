@@ -10,13 +10,12 @@ UDP_PORT = 8000
 
 client_id = UDP_IP + ":" + str(UDP_PORT)
 
-name_indx = 0
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((UDP_IP, UDP_PORT))
 
-time_delta_start = 0.0
 
 while True:
+    # create name indx of telemetry file
     basedir = os.path.abspath(os.getcwd())
     print(basedir)
     flag = int(input("Чтобы начать запись, введите 1: "))
@@ -33,6 +32,8 @@ while True:
                 print(f"{file_name} file not telemetry file ==> skip...")
         name_indx = max_indx + 1
         print(f"new name indx = {name_indx}")
+        # create file or rewrite
+        time_delta_start = 0.0
         with open(str(name_indx), 'w+') as file_rec:
             while time_delta_start <= 60.1:
                 mpu6050_acc_x = None

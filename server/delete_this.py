@@ -11,7 +11,7 @@ for file_name in base_dir:
             for line in file.readlines():
                 dict = json.loads(line)
                 print(dict["time"])
-    except:
+    except Exception:
         pass
 
 
