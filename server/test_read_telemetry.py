@@ -8,9 +8,14 @@ for file_name in base_dir:
     print(path)
     try:
         with open(path, "r") as file:
-            for line in file.readlines():
+            all_lines = file.readlines()
+            comp_info = all_lines[0]
+            print(f"info comp: {json.loads(comp_info)}")
+            print("telemetry:")
+            for i in range(1, len(all_lines) + 1):
+                line = all_lines[i]
                 dict = json.loads(line)
-                print(dict["time"])
+                print(dict)
     except Exception:
         pass
 
