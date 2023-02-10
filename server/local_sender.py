@@ -5,9 +5,9 @@ import sys
 
 
 attempts = 1
-comp_stage_info = input("stage/num_of_memb: ")
+comp_stage_info = input("num_of_comp/type_of_stage/count_of_memb: ")
 message = bytes(comp_stage_info, 'utf-8')
-multicast_group = ('224.1.1.1', 10000)
+multicast_group = ('224.51.105.104', 2349)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 ttl = struct.pack('b', 1)
 sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, ttl)
