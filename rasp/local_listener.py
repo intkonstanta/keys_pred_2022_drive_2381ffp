@@ -8,7 +8,7 @@ import struct
 from datetime import datetime
 
 multicast_group = '224.51.105.104'
-server_address = ('', 2350)
+server_address = ('', 2340)
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind(server_address)
 group = socket.inet_aton(multicast_group)
@@ -24,7 +24,7 @@ all_data = {
 }
 
 time_to_rec = 60.1 # Recording duration
-request_rate = 10 # Requests per second
+request_rate = 20 # Requests per second
 request_rate = 1 / request_rate
 
 while True:
@@ -57,7 +57,6 @@ while True:
                     gyneo7m_speed = None
                     gyneo7m_high = None
 
-
                     data = {
                         "id": client_id,
                         "time": f"{time_delta_start:.3}",
@@ -75,7 +74,10 @@ while True:
 
             print("File recording finished!")
             time_delta_start = 0.0
-            #add file in DB
-            sent = sock.sendto(b"2", address)
-            # name_indx += 1
+
+            # !add file in DB!
+            try:
+                sent = sock.sendto(b"fr", address)
+            except sock.timeout:
+                print("failed send flag - finish recording")
 
